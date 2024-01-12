@@ -5,9 +5,10 @@
   "main": "dist/index.ts",
   "scripts": {
     "test": "test",
-    "build": "npx tsc",
+    "build": "npm run clean && tsc -p ./tsconfig.server.json",
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "clean": "rm -rf dist"
   },
   "author": "jude",
   "license": "UNLICENSED",
