@@ -1,0 +1,14 @@
+{
+  "author": "jude",
+  "license": "ISC",
+  "name": "exercise-program-common",
+  "version": "1.0.0",
+  "description": "common files for exercise",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "test",
+    "build": "npm run clean && tsc -p ./tsconfig.common.json",
+    "clean": "rm -rf ./dist"
+  },
+  "types": "dist/index.d.ts"
+}
