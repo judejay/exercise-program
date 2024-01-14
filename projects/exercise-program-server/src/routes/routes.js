@@ -34,7 +34,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initializeRoutes = void 0;
 const express = __importStar(require("express"));
-const exercise_service_1 = require("../services/exercise_service");
+const EXERCISES = __importStar(require("../data/exercises.json"));
 function initializeRoutes(app) {
     console.log('🏗️  Setting up routers...');
     addHealthCheck(app);
@@ -74,8 +74,13 @@ function addAPIRoutes(app) {
         // 	res.status(500).send({ message: "Invalid amount" });
         // 	return;
         // }
+        // 	const result = JSON.stringify({
+        // 		exercises: await fetchExerciseData()
+        // 	});
+        // 	res.status(200).send(result);
+        // });
         const result = JSON.stringify({
-            exercises: yield (0, exercise_service_1.fetchExerciseData)()
+            exercises: EXERCISES
         });
         res.status(200).send(result);
     }));
