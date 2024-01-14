@@ -6,7 +6,7 @@ export async function fetchExerciseData() {
 		const response = await axios.get('https://api.api-ninjas.com/v1/exercises', {
 			headers: {
 				'Content-Type': 'application/json',
-				'X-Api-Key': 'IdjPN+5+oCOojXVHyAtrQA==x5clYkxpnIbNo118'
+				'X-Api-Key': 'USEKEY'
 			}
 		});
 		return response.data;
