@@ -14,8 +14,10 @@ const App: React.FC = () => {
 			.then(async (response) => {
 				const payload = await response.json();
 				if (response.ok) {
-					console.log(payload);
-					setExercises(payload);
+					console.log("payload", payload.exercises.exercises)
+					setExercises(payload.exercises.exercises);
+					console.log("exercises", exercises);
+
 				} else {
 					setErrorMessage(payload.message);
 				}
@@ -32,31 +34,25 @@ const App: React.FC = () => {
 	return (
 		<div>
 			<div>
-				<p>
-					<span>Exercise: </span>
+				<h1>
+					Exercises
+				</h1>
 
-				</p>
-				<button onClick={() => { }} type="button">
-					Get exercise
-				</button>
 
 				{errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 			</div>
 
-			<div>
-				<h2>{exercises !== undefined ? exercises.toString() : 'TODO'}</h2>
-				<h3
-					style={{
-						display: 'flex',
-						alignItems: 'center'
-					}}
-				>
+			<ul>
+				{exercises && exercises?.map((exc, index) => {
+					return <li key={index}>{exc.name}</li>
+
+				})}
 
 
-				</h3>
 
-			</div>
-		</div>
+
+			</ul>
+		</div >
 	);
 };
 

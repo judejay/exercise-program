@@ -42,8 +42,9 @@ const App = () => {
             .then((response) => __awaiter(void 0, void 0, void 0, function* () {
             const payload = yield response.json();
             if (response.ok) {
-                console.log(payload);
-                setExercises(payload);
+                console.log("payload", payload.exercises.exercises);
+                setExercises(payload.exercises.exercises);
+                console.log("exercises", exercises);
             }
             else {
                 setErrorMessage(payload.message);
@@ -55,28 +56,23 @@ const App = () => {
     }, []);
     return (<div>
 			<div>
-				<p>
-					<span>Exercise: </span>
+				<h1>
+					Exercises
+				</h1>
 
-				</p>
-				<button onClick={() => { }} type="button">
-					Get exercise
-				</button>
 
 				{errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 			</div>
 
-			<div>
-				<h2>{exercises !== undefined ? exercises.toString() : 'TODO'}</h2>
-				<h3 style={{
-            display: 'flex',
-            alignItems: 'center'
-        }}>
+			<ul>
+				{exercises && (exercises === null || exercises === void 0 ? void 0 : exercises.map((exc, index) => {
+            return <li key={index}>{exc.name}</li>;
+        }))}
 
 
-				</h3>
 
-			</div>
+
+			</ul>
 		</div>);
 };
 const container = document.getElementById('app');
