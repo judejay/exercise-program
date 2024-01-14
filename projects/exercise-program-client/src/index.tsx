@@ -8,16 +8,13 @@ const App: React.FC = () => {
 	const [exercises, setExercises] = useState<Exercise[]>();
 
 	useEffect(() => {
-		fetch(
-			'http://localhost:3000/api/exercises'
-		)
+		fetch('http://localhost:3000/api/exercises')
 			.then(async (response) => {
 				const payload = await response.json();
 				if (response.ok) {
-					console.log("payload", payload.exercises.exercises)
+					console.log('payload', payload.exercises.exercises);
 					setExercises(payload.exercises.exercises);
-					console.log("exercises", exercises);
-
+					console.log('exercises', exercises);
 				} else {
 					setErrorMessage(payload.message);
 				}
@@ -25,34 +22,23 @@ const App: React.FC = () => {
 			.catch((_networkError) => {
 				setErrorMessage('Network error');
 			});
-
-
-	}, [])
-
-
+	}, []);
 
 	return (
 		<div>
 			<div>
-				<h1>
-					Exercises
-				</h1>
-
+				<h1>Exercises returned from server</h1>
 
 				{errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 			</div>
 
 			<ul>
-				{exercises && exercises?.map((exc, index) => {
-					return <li key={index}>{exc.name}</li>
-
-				})}
-
-
-
-
+				{exercises &&
+					exercises?.map((exc, index) => {
+						return <li key={index}>{exc.name}</li>;
+					})}
 			</ul>
-		</div >
+		</div>
 	);
 };
 

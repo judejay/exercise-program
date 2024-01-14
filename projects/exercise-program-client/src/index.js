@@ -42,9 +42,9 @@ const App = () => {
             .then((response) => __awaiter(void 0, void 0, void 0, function* () {
             const payload = yield response.json();
             if (response.ok) {
-                console.log("payload", payload.exercises.exercises);
+                console.log('payload', payload.exercises.exercises);
                 setExercises(payload.exercises.exercises);
-                console.log("exercises", exercises);
+                console.log('exercises', exercises);
             }
             else {
                 setErrorMessage(payload.message);
@@ -56,22 +56,16 @@ const App = () => {
     }, []);
     return (<div>
 			<div>
-				<h1>
-					Exercises
-				</h1>
-
+				<h1>Exercises returned from server</h1>
 
 				{errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 			</div>
 
 			<ul>
-				{exercises && (exercises === null || exercises === void 0 ? void 0 : exercises.map((exc, index) => {
-            return <li key={index}>{exc.name}</li>;
-        }))}
-
-
-
-
+				{exercises &&
+            (exercises === null || exercises === void 0 ? void 0 : exercises.map((exc, index) => {
+                return <li key={index}>{exc.name}</li>;
+            }))}
 			</ul>
 		</div>);
 };
