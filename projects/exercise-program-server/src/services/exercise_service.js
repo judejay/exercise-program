@@ -21,7 +21,7 @@ function fetchExerciseData() {
             const response = yield axios_1.default.get('https://api.api-ninjas.com/v1/exercises', {
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Api-Key': ''
+                    'X-Api-Key': 'USEKEY'
                 }
             });
             return response.data;
